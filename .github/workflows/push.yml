@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - '*-maintenance'
+  workflow_dispatch:
 
 jobs:
   ci:
