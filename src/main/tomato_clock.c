@@ -1,9 +1,9 @@
-﻿/*
+/*
  * Tomato Clock (Pomodoro) for Betaflight
  * 25 minutes work / 5 minutes rest
  */
 
-#include <stdint.h>
+#include "platform.h"`n#include <stdint.h>
 #include <stdbool.h>
 #include "drivers/light_led.h"
 #include "drivers/time.h"
