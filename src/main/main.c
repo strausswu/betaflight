@@ -41,6 +41,7 @@
 #endif
 
 #include "scheduler/scheduler.h"
+#include "tomato_clock.h"
 
 #ifdef CONFIG_IN_FILE
 #include "cli/cli.h"
@@ -117,8 +118,10 @@ int main(int argc, char * argv[])
 
 void FAST_CODE run(void)
 {
+    tomatoClockInit();
     while (true) {
         scheduler();
+        tomatoClockLoop();
 #if defined(RUN_LOOP_DELAY_US) && RUN_LOOP_DELAY_US > 0
         delayMicroseconds_real(RUN_LOOP_DELAY_US);
 #endif
