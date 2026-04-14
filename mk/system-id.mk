@@ -26,13 +26,16 @@ ifeq ($(UNAME), Darwin)
   OSFAMILY := macosx
 endif
 
-# Detect all Windows-based POSIX environments (MinGW, MSYS, Cygwin)
-ifneq (,$(filter MINGW% MSYS% CYGWIN%,$(UNAME)))
+# Detect all Windows-based environments (MinGW, MSYS, Cygwin, Windows_NT)
+ifneq (,$(filter MINGW% MSYS% CYGWIN% Windows_NT%,$(UNAME)))
   OSFAMILY := windows
 
   # Set specific environment flags if needed
   ifneq (,$(filter CYGWIN%,$(UNAME)))
     CYGWIN := 1
+  else ifneq (,$(filter Windows_NT%,$(UNAME)))
+    # Pure Windows, treat as MINGW
+    MINGW := 1
   else
     MINGW := 1
   endif
